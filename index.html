@@ -18,18 +18,18 @@
 
         /* Navigation bar styles */
         .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-sizing: border-box; /* Ensures padding is included in width calculations */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-sizing: border-box; /* Ensures padding is included in width calculations */
+        }
         .logo {
             max-width: 140px;
             height: auto;
@@ -76,6 +76,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        model-viewer {
+            width: 80vmin; /* Make the model 80% of the smaller viewport dimension */
+            height: 80vmin; /* Make the model 80% of the smaller viewport dimension */
+            max-width: 600px; /* Limit the maximum width */
+            max-height: 600px; /* Limit the maximum height */
+            background-color: transparent; /* Ensure no background behind the model */
         }
     </style>
 </head>
@@ -91,54 +100,17 @@
     </div>
 
     <div class="content">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-        <script>
-            // Create a scene, camera, and renderer
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
-
-            // Create a 3D cube geometry and material
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-
-            // Add lighting for better 3D object visualization
-            const light = new THREE.DirectionalLight(0xffffff, 1);
-            light.position.set(5, 5, 5).normalize();
-            scene.add(light);
-
-            const ambientLight = new THREE.AmbientLight(0x404040); // Ambient light for general illumination
-            scene.add(ambientLight);
-
-            // Set the camera position
-            camera.position.z = 5;
-
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                const width = window.innerWidth;
-                const height = window.innerHeight;
-                renderer.setSize(width, height);
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-            });
-
-            // Animation loop for rendering and rotating the object
-            function animate() {
-                requestAnimationFrame(animate);
-
-                // Rotate the cube
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
-
-                renderer.render(scene, camera);
-            }
-
-            animate();
-        </script>
+        <model-viewer 
+            src="models/UPCUBE.glb" 
+            alt="An abstract 3D model with labeled origin and center" 
+            auto-rotate 
+            camera-controls
+            camera-target="0m 0m 0m"
+            shadow-intensity="1"
+            ar>
+        </model-viewer>
     </div>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </body>
 </html>
