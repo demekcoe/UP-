@@ -1,0 +1,17 @@
+{
+  "name": "UP Website Backend",
+  "description": "Backend server for UP website contact and booking forms",
+  "repository": "https://github.com/yourusername/your-repo-name",
+  "keywords": ["python", "flask", "email"],
+  "env": {
+    "EMAIL_PASSWORD": {
+      "description": "Gmail App Password for sending emails",
+      "required": true
+    },
+    "ALLOWED_ORIGIN": {
+      "description": "Frontend domain URL (e.g., https://your-site.netlify.app)",
+      "required": true
+    }
+  },
+  "addons": []
+}
