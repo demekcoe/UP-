@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <style>
+    .bg{fill:#f6f7fb}
+    .panel{fill:#ffffff;stroke:#d6d9e6;stroke-width:1}
+    .nav{fill:#1a1f36}
+    .accent{fill:#3b82f6}
+    .btn{fill:#10b981}
+    .text{font-family:Inter, Arial, sans-serif;fill:#111827}
+    .muted{fill:#6b7280}
+    .label{font-size:18px}
+    .title{font-size:28px;font-weight:700}
+    .hint{font-size:14px;fill:#374151}
+  </style>
+  <rect class="bg" width="1200" height="800"/>
+  <rect x="40" y="40" width="1120" height="120" rx="8" class="panel"/>
+  <text x="64" y="86" class="title">Netlify — Site dashboard (example)</text>
+  <text x="64" y="116" class="hint">From your site dashboard click "Site settings" then "Build & deploy" → "Environment"</text>
+
+  <rect x="40" y="180" width="320" height="540" rx="8" class="panel"/>
+  <text x="64" y="220" class="label">Site Navigation</text>
+  <g transform="translate(64,240)">
+    <rect x="0" y="16" width="240" height="36" rx="6" fill="#eef2ff"/>
+    <text x="12" y="40" class="muted">Overview</text>
+    <rect x="0" y="72" width="240" height="36" rx="6" fill="#fff" stroke="#e6e9f2"/>
+    <text x="12" y="96" class="muted">Deploys</text>
+    <rect x="0" y="128" width="240" height="36" rx="6" fill="#fff" stroke="#e6e9f2"/>
+    <text x="12" y="152" class="muted">Site settings</text>
+    <rect x="0" y="184" width="240" height="36" rx="6" fill="#fff" stroke="#e6e9f2"/>
+    <text x="12" y="208" class="muted">Build & deploy</text>
+    <rect x="0" y="240" width="240" height="36" rx="6" fill="#fff" stroke="#e6e9f2"/>
+    <text x="12" y="264" class="muted">Environment</text>
+  </g>
+
+  <rect x="380" y="180" width="780" height="540" rx="8" class="panel"/>
+  <text x="404" y="220" class="label">Site: upanimate (example)</text>
+  <text x="404" y="250" class="muted">Top controls</text>
+  <rect x="980" y="196" width="140" height="40" rx="6" class="btn"/>
+  <text x="1002" y="224" class="text" fill="#fff">Deploy site</text>
+
+  <!-- highlight area for Site settings path -->
+  <rect x="404" y="300" width="540" height="56" rx="6" fill="#fff7ed" stroke="#ffd5a8"/>
+  <text x="420" y="334" class="hint">Click "Site settings" (left column) → then "Build & deploy" → "Environment"</text>
+
+  <text x="64" y="760" class="muted">Note: actual Netlify UI may vary. These are illustrative screenshots showing the clickable areas.</text>
+</svg>

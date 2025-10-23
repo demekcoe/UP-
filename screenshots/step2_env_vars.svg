@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <style>
+    .bg{fill:#f6f7fb}
+    .panel{fill:#ffffff;stroke:#d6d9e6;stroke-width:1}
+    .input{fill:#fff;stroke:#e6e9f2}
+    .accent{fill:#3b82f6}
+    .text{font-family:Inter, Arial, sans-serif;fill:#111827}
+    .label{font-size:16px}
+    .hint{font-size:14px;fill:#374151}
+    .kbd{font-family:monospace;font-size:13px;fill:#111827}
+  </style>
+  <rect class="bg" width="1200" height="800"/>
+  <rect x="40" y="40" width="1120" height="120" rx="8" class="panel"/>
+  <text x="64" y="86" class="label">Netlify — Environment variables (example)</text>
+
+  <rect x="60" y="180" width="1080" height="540" rx="8" class="panel"/>
+  <text x="84" y="220" class="label">Environment variables</text>
+
+  <!-- example input rows -->
+  <g transform="translate(84,240)">
+    <rect x="0" y="0" width="960" height="52" rx="6" class="input"/>
+    <text x="12" y="30" class="kbd">KEY: SMTP_HOST</text>
+    <text x="420" y="30" class="muted">VALUE: smtp.gmail.com</text>
+
+    <rect x="0" y="72" width="960" height="52" rx="6" class="input"/>
+    <text x="12" y="102" class="kbd">KEY: SMTP_PORT</text>
+    <text x="420" y="102" class="muted">VALUE: 587</text>
+
+    <rect x="0" y="144" width="960" height="52" rx="6" class="input"/>
+    <text x="12" y="174" class="kbd">KEY: SMTP_USER</text>
+    <text x="420" y="174" class="muted">VALUE: your-email@gmail.com</text>
+
+    <rect x="0" y="216" width="960" height="52" rx="6" class="input"/>
+    <text x="12" y="246" class="kbd">KEY: SMTP_PASS</text>
+    <text x="420" y="246" class="muted">VALUE: (your Gmail App Password — 16 chars)</text>
+
+    <rect x="0" y="288" width="960" height="52" rx="6" class="input"/>
+    <text x="12" y="318" class="kbd">KEY: TO_EMAIL</text>
+    <text x="420" y="318" class="muted">VALUE: (optional) recipient@example.com</text>
+
+    <rect x="980" y="24" width="120" height="40" rx="6" fill="#3b82f6"/>
+    <text x="1002" y="52" fill="#fff">Save</text>
+  </g>
+
+  <text x="84" y="560" class="hint">Important: Treat your App Password like a secret — do not commit it to source control. Use Netlify's Environment UI to keep it private.</text>
+</svg>

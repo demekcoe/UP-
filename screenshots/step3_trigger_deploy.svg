@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <style>
+    .bg{fill:#f6f7fb}
+    .panel{fill:#ffffff;stroke:#d6d9e6;stroke-width:1}
+    .btn{fill:#3b82f6}
+    .text{font-family:Inter, Arial, sans-serif;fill:#111827}
+    .hint{font-size:14px;fill:#374151}
+  </style>
+  <rect class="bg" width="1200" height="800"/>
+  <rect x="40" y="40" width="1120" height="120" rx="8" class="panel"/>
+  <text x="64" y="86" class="text">Trigger a deploy</text>
+
+  <rect x="64" y="180" width="1072" height="520" rx="8" class="panel"/>
+  <text x="84" y="224" class="hint">After saving env vars, trigger a new deploy. Options:</text>
+  <text x="84" y="258" class="hint">• Click "Deploy site" on the dashboard</text>
+  <text x="84" y="286" class="hint">• Or push a new commit to the connected repo (git push)</text>
+
+  <rect x="980" y="196" width="140" height="40" rx="6" class="btn"/>
+  <text x="1002" y="224" fill="#fff">Deploy site</text>
+
+  <text x="84" y="740" class="muted">Once deployed, test the contact and booking forms on your production URL to receive emails.</text>
+</svg>
