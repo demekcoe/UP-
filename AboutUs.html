@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="icon" href="Uplogo.png" type="image/x-icon">
+    <!-- Futuristic fonts: Orbitron for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header with logo and buttons -->
+<div class="header">
+    <img src="Uplogo.png" alt="Logo" class="logo"> <!-- Replace "Uplogo.png" with your logo path -->
+    <div class="nav-buttons">
+        <a href="index.html">Home</a>
+        <a href="#" onclick="openBookingModal(event)">Book Now</a>
+        <a href="#" onclick="openContactModal(event)">Contact Us</a>
+    </div>
+</div>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+            <h2>Book a Session</h2>
+            <form id="bookingForm" name="booking-form" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitBookingForm(event)">
+                <input type="hidden" name="form-name" value="booking-form">
+                <input type="hidden" name="bot-field" id="bot-field-booking">
+                <div class="form-group">
+                    <label for="bookingName">Name:</label>
+                    <input type="text" id="bookingName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingEmail">Email:</label>
+                    <input type="email" id="bookingEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Preferred Date:</label>
+                    <input type="date" id="bookingDate" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Preferred Time:</label>
+                    <input type="time" id="bookingTime" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingType">Type of Session:</label>
+                    <select id="bookingType" name="type" required>
+                        <option value="">Select a session type</option>
+                        <option value="3D Animation">3D Animation</option>
+                        <option value="Video Game Development">Video Game Development</option>
+                        <option value="Augmented Reality">Augmented Reality</option>
+                        <option value="Consultation">General Consultation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bookingNotes">Additional Notes:</label>
+                    <textarea id="bookingNotes" name="notes"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Booking Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="contactForm" name="contact-form" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitContactForm(event)">
+                <input type="hidden" name="form-name" value="contact-form">
+                <input type="hidden" name="bot-field" id="bot-field-contact">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="about-content">
+        <!-- Top grid -->
+        <div class="text-col">
+            <h1>We Are UP!</h1>
+            <p>At UP!, here in the great city of Detroit Michigan, we're dedicated to bringing the world of possibilities to life. Our mission is to unlock the world of 3D animation, video games, and augmented reality for everyone. We strive to democratize access to immersive digital experiences by breaking down barriers and creating opportunities for people from all walks of life to engage with, create, and enjoy the wonders of 3D. Through innovation, creativity, and inclusivity, we aim to inspire and empower new generations of artists, gamers, and dreamers to explore and participate in this vibrant and evolving medium.
+            </p>
+        </div>
+        
+        <div class="slideshow-col">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="ForestUC.png" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="UpCloser.png" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="JoseUp.png" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="RenCenpicBloom.png" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="RenCenpicDay.png" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="JohnnyLego.png" alt="Slide 3">
+                </div>
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+        </div>
+
+        <!-- Middle grid -->
+        <div class="bottom-text-col">
+            <h2>Our Vision</h2>
+            <p>Through our innovative approach to digital creativity, we're building a future where everyone has the tools and knowledge to bring their ideas to life in 3D. Whether you're a seasoned artist or just starting your journey into digital creation, UP! provides the platform and support you need to succeed.</p>
+        </div>
+
+        <div class="bottom-image-col">
+            <div class="feature-image-container">
+                <img src="RenCenpicDay.png" alt="Featured Image" class="feature-image">
+            </div>
+        </div>
+
+        <!-- Bottom grid -->
+        <div class="bottom-text-col-2">
+            <h2>Meet the Founder</h2>
+            <p>DeMekco Eberhardt is the Founder and CEO of UP!, a Detroit-based 3D and 2D animation company dedicated to pushing the boundaries of digital creativity. As a software engineer, programmer, and 3D generalist, DeMekco combines technical expertise with a visionary approach to storytelling and interactive design.
+
+Driven by inspirations like Hideo Kojima, Pixar, and Pendleton Ward, DeMekco leads UP! with the belief that immersive technology should be accessible to everyone. His mission is to democratize the world of 3D animation, video games, and augmented reality, making it possible for people from all walks of life to explore, create, and experience the power of digital worlds.
+
+From Detroit, Michigan, DeMekco champions a future where innovation, inclusivity, and imagination come together—empowering a new generation of artists, gamers, and dreamers to bring their ideas to life. </p>
+        </div>
+
+        <div class="bottom-image-col-2">
+            <div class="feature-image-container">
+                <img src="DeMekcoPort.jpeg" alt="Community Image" class="feature-image">
+            </div>
+        </div>
+    </div><script>
+    let slideIndex = 1;
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("slide");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+
+    function changeSlide(n) {
+        slideIndex += n;
+        const slides = document.getElementsByClassName("slide");
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        if (slideIndex < 1) { slideIndex = slides.length }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        slides[slideIndex - 1].classList.add("active");
+    }
+
+    showSlides(); // Start the slideshow
+
+    // Contact form functions
+    function openContactModal(event) {
+        event.preventDefault();
+        const modal = document.getElementById('contactModal');
+        modal.classList.add('show');
+    }
+
+    function closeContactModal() {
+        const modal = document.getElementById('contactModal');
+        modal.classList.remove('show');
+    }
+
+    async function submitContactForm(event) {
+        event.preventDefault();
+        const submitBtn = event.target.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        try {
+            // If you want to use Formspree, paste your Formspree form ID below
+            const FORMSPREE_CONTACT = '';
+            const NETLIFY_FORMS_ENABLED = true;
+
+            let response;
+            if (FORMSPREE_CONTACT) {
+                response = await fetch(`https://formspree.io/f/${FORMSPREE_CONTACT}`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+            } else if (NETLIFY_FORMS_ENABLED) {
+                const formEl = document.getElementById('contactForm');
+                const fd = new FormData(formEl);
+                response = await fetch(window.location.pathname || '/', {
+                    method: 'POST',
+                    body: fd
+                });
+            } else {
+                response = await fetch('http://localhost:5000/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+            }
+
+            const data = await response.json();
+
+            if (response.ok && (data.success || data.ok || data.status === 'success')) {
+                const successMsg = document.createElement('div');
+                successMsg.className = 'form-message success';
+                successMsg.textContent = 'Message sent successfully!';
+                event.target.appendChild(successMsg);
+
+                document.getElementById('contactForm').reset();
+                if (NETLIFY_FORMS_ENABLED) {
+                    try { await fetch('/.netlify/functions/forward-email', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ type: 'contact', name, email, message }) }); } catch(e) { console.warn('forward-email failed', e); }
+                }
+                setTimeout(() => closeContactModal(), 1600);
+            } else {
+                throw new Error(data.message || 'Unknown error');
+            }
+        } catch (error) {
+            // Show error message
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'form-message error';
+            errorMsg.textContent = 'Failed to send message. Please try again.';
+            event.target.appendChild(errorMsg);
+            console.error('Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    }
+
+    // Booking form handler (mirrors index.html behavior)
+    async function submitBookingForm(event) {
+        event.preventDefault();
+        const submitBtn = event.target.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        const formData = {
+            name: document.getElementById('bookingName').value,
+            email: document.getElementById('bookingEmail').value,
+            date: document.getElementById('bookingDate').value,
+            time: document.getElementById('bookingTime').value,
+            type: document.getElementById('bookingType').value,
+            notes: document.getElementById('bookingNotes').value
+        };
+
+        try {
+            const FORMSPREE_BOOKING = '';
+            const NETLIFY_FORMS_ENABLED = true;
+
+            let response;
+            if (FORMSPREE_BOOKING) {
+                response = await fetch(`https://formspree.io/f/${FORMSPREE_BOOKING}`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+            } else if (NETLIFY_FORMS_ENABLED) {
+                const formEl = document.getElementById('bookingForm');
+                const fd = new FormData(formEl);
+                response = await fetch(window.location.pathname || '/', {
+                    method: 'POST',
+                    body: fd
+                });
+            } else {
+                response = await fetch('http://localhost:5000/send-booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+            }
+
+            const data = await response.json();
+
+            if (response.ok && (data.success || data.ok || data.status === 'success')) {
+                const successMsg = document.createElement('div');
+                successMsg.className = 'form-message success';
+                successMsg.textContent = 'Booking request sent successfully!';
+                event.target.appendChild(successMsg);
+
+                document.getElementById('bookingForm').reset();
+                if (NETLIFY_FORMS_ENABLED) {
+                    try { await fetch('/.netlify/functions/forward-email', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ type: 'booking', ...formData }) }); } catch(e) { console.warn('forward-email failed', e); }
+                }
+                setTimeout(() => closeBookingModal(), 1600);
+            } else {
+                throw new Error(data.message || 'Unknown error');
+            }
+        } catch (error) {
+            const errorMsg = document.createElement('div');
+            errorMsg.className = 'form-message error';
+            errorMsg.textContent = 'Failed to send booking request. Please try again.';
+            event.target.appendChild(errorMsg);
+            console.error('Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Booking Request';
+        }
+    }
+
+    // Close modal if clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            closeContactModal();
+        }
+    }
+</script>
+
+</body>
+</html>
