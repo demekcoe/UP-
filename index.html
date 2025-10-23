@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP!</title>
+    <link rel="icon" href="Uplogo.png" type="image/x-icon">
+    <!-- Futuristic fonts: Orbitron for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <!-- Logo on the left -->
+        <img src="Uplogo.png" alt="Your Logo" class="logo">
+        <!-- Navigation links on the right -->
+        <div class="nav-links">
+            <a href="AboutUs.html">About UP!</a>
+            <a href="#" onclick="openBookingModal(event)">Book Now</a>
+            <a href="#" onclick="openContactModal(event)">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+            <h2>Book a Session</h2>
+            <form id="bookingForm" name="booking-form" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitBookingForm(event)">
+                <input type="hidden" name="form-name" value="booking-form">
+                <input type="hidden" name="bot-field" id="bot-field-booking">
+                <div class="form-group">
+                    <label for="bookingName">Name:</label>
+                    <input type="text" id="bookingName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingEmail">Email:</label>
+                    <input type="email" id="bookingEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Preferred Date:</label>
+                    <input type="date" id="bookingDate" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Preferred Time:</label>
+                    <input type="time" id="bookingTime" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingType">Type of Session:</label>
+                    <select id="bookingType" name="type" required>
+                        <option value="">Select a session type</option>
+                        <option value="3D Animation">3D Animation</option>
+                        <option value="Video Game Development">Video Game Development</option>
+                        <option value="Augmented Reality">Augmented Reality</option>
+                        <option value="Consultation">General Consultation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bookingNotes">Additional Notes:</label>
+                    <textarea id="bookingNotes" name="notes"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Booking Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <form id="contactForm" name="contact-form" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitContactForm(event)">
+                <input type="hidden" name="form-name" value="contact-form">
+                <input type="hidden" name="bot-field" id="bot-field-contact">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left-col">
+            <model-viewer 
+                src="models/NewRenniModel.glb" 
+                alt="An abstract 3D model with labeled origin and center" 
+                auto-rotate 
+                camera-controls
+                camera-target="0m 0m 0m"
+                shadow-intensity="1"
+                ar>
+            </model-viewer>
+        </div>
+        <div class="right-col">
+            <h2>About UP!</h2>
+            <p>
+                At UP!, here in the great city of Detroit Michigan, we're dedicated to bringing the world of possibilities to life. Our mission is to unlock the world of 3D animation, video games, and augmented reality for everyone. We strive to democratize access to immersive digital experiences by breaking down barriers and creating opportunities for people from all walks of life to engage with, create, and enjoy the wonders of 3D. Through innovation, creativity, and inclusivity, we aim to inspire and empower new generations of artists, gamers, and dreamers to explore and participate in this vibrant and evolving medium.
+            </p>
+            <a class="read-more" href="AboutUs.html">Read more →</a>
+        </div>
+    </div>
+
+    <!-- layout styles moved to styles.css -->
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">    </script>
+    <script>
+        // Global form provider flags - toggle here to switch behavior for both forms
+        // If you want to use Formspree for contact form, set FORMSPREE_CONTACT to your Formspree ID
+        const FORMSPREE_CONTACT = '';
+        // When true the site will POST Netlify-compatible FormData to the site root so Netlify captures submissions
+        const NETLIFY_FORMS_ENABLED = true;
+        function openContactModal(event) {
+            event.preventDefault();
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('show');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('show');
+        }
+
+        function openBookingModal(event) {
+            event.preventDefault();
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('show');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('show');
+        }
+
+        async function submitContactForm(event) {
+            event.preventDefault();
+            const submitBtn = event.target.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                let response;
+                if (FORMSPREE_CONTACT) {
+                    // Post to Formspree (no server required)
+                    response = await fetch(`https://formspree.io/f/${FORMSPREE_CONTACT}`, {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: JSON.stringify({ name, email, message })
+                    });
+                } else if (NETLIFY_FORMS_ENABLED) {
+                    // Submit as a Netlify form (FormData) — Netlify will capture submissions
+                    const formEl = document.getElementById('contactForm');
+                    const formData = new FormData(formEl);
+                    response = await fetch(window.location.pathname || '/', {
+                        method: 'POST',
+                        body: formData
+                    });
+                } else {
+                    // Fallback to your backend server
+                    const endpoint = window.location.hostname === 'localhost'
+                        ? 'http://localhost:5000/send-email'
+                        : 'https://your-heroku-app.herokuapp.com/send-email';
+                    response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, message })
+                    });
+                }
+
+                const data = await response.json();
+
+                if (response.ok && (data.success || data.ok || data.status === 'success')) {
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'form-message success';
+                    successMsg.textContent = 'Message sent successfully!';
+                    event.target.appendChild(successMsg);
+
+                    document.getElementById('contactForm').reset();
+                    // If Netlify Forms is enabled, also POST to the serverless function to forward as email
+                    if (NETLIFY_FORMS_ENABLED) {
+                        try { await fetch('/.netlify/functions/forward-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'contact', name, email, message }) }); } catch (e) { console.warn('forward-email failed', e); }
+                    }
+
+                    setTimeout(() => closeContactModal(), 1600);
+                } else {
+                    throw new Error(data.message || 'Unknown error');
+                }
+            } catch (error) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'form-message error';
+                errorMsg.textContent = 'Failed to send message. Please try again.';
+                event.target.appendChild(errorMsg);
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        }
+
+        async function submitBookingForm(event) {
+            event.preventDefault();
+            const submitBtn = event.target.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = {
+                name: document.getElementById('bookingName').value,
+                email: document.getElementById('bookingEmail').value,
+                date: document.getElementById('bookingDate').value,
+                time: document.getElementById('bookingTime').value,
+                type: document.getElementById('bookingType').value,
+                notes: document.getElementById('bookingNotes').value
+            };
+
+            try {
+                // Prefer Netlify form submission if enabled
+                let response;
+                if (NETLIFY_FORMS_ENABLED) {
+                    const formEl = document.getElementById('bookingForm');
+                    const fd = new FormData(formEl);
+                    response = await fetch(window.location.pathname || '/', { method: 'POST', body: fd });
+                } else {
+                    response = await fetch(window.location.hostname === 'localhost' 
+                        ? 'http://localhost:5000/send-booking'
+                        : 'https://your-heroku-app.herokuapp.com/send-booking', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+                }
+
+                const data = await response.json();
+
+                if (response.ok && (data.success || data.ok || data.status === 'success')) {
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'form-message success';
+                    successMsg.textContent = 'Booking request sent successfully!';
+                    event.target.appendChild(successMsg);
+
+                    document.getElementById('bookingForm').reset();
+
+                    // also call serverless forwarder
+                    if (NETLIFY_FORMS_ENABLED) {
+                        try {
+                            await fetch('/.netlify/functions/forward-email', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ type: 'booking', ...formData })
+                            });
+                        } catch (e) { console.warn('forward-email failed', e); }
+                    }
+
+                    setTimeout(() => {
+                        closeBookingModal();
+                    }, 2000);
+                } else {
+                    throw new Error(data.message);
+                }
+            } catch (error) {
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'form-message error';
+                errorMsg.textContent = 'Failed to send booking request. Please try again.';
+                event.target.appendChild(errorMsg);
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Booking Request';
+            }
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            const contactModal = document.getElementById('contactModal');
+            const bookingModal = document.getElementById('bookingModal');
+            if (event.target === contactModal) {
+                closeContactModal();
+            } else if (event.target === bookingModal) {
+                closeBookingModal();
+            }
+        }
+    </script>
+</body>
+</html>
